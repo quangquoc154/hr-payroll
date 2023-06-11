@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "nodemon app.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -13,7 +13,10 @@
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
     "morgan": "~1.9.1",
-    "mysql2": "^3.3.3",
+    "msnodesqlv8": "^4.1.0",
+    "mssql": "^9.1.1",
+    "mysql2": "^3.3.4",
+    "node-mssql": "^0.0.1",
     "sequelize": "^6.32.0",
     "tedious": "^16.1.0"
   },
