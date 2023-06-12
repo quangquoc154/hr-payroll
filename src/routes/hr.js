@@ -21,6 +21,8 @@ router.get('/list-employee', hrController.getAllEmployee)
 
 router.post('/add-employee', hrController.createNewEmployee)
 
+router.put('/list-employee/:id', hrController.editEmployee)
+
 router.delete('/delete-employee/:id', hrController.deleteEmployee)
 
 module.exports = router;
