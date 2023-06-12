@@ -20,8 +20,6 @@ const conn = new sql.ConnectionPool(config).connect().then((pool) => {
   return pool;
 });
 
-module.exports = conn;
-
 // const get = async () => {
 //   try {
 //     const pool = await sql.connect(sqlConfig);
@@ -37,5 +35,4 @@ module.exports = conn;
 
 module.exports = {
   conn: conn,
-  sql: sql
 };
