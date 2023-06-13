@@ -142,21 +142,31 @@ exports.editEmployee = async function (req, res, next) {
 exports.deleteEmployee = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const sqlHr = `DELETE dbo.Employment where Employee_ID = ${id}
-            DELETE dbo.Personal where Employee_ID = ${id}
-      `;
-    const sqlPayroll = 'DELETE FROM employee WHERE Employee_Number = ?'
     const pool = await conn;
-    await pool.request().query(sqlHr)
-    await connPr.execute(sqlPayroll, [id])
+    const sqlEmergency_Contacts = `DELETE  dbo.Emergency_Contacts WHERE Employee_ID = ${id}`;
+    await pool.request().query(sqlEmergency_Contacts);
+
+    const sqlJob_History = `DELETE  dbo.Job_History WHERE Employee_ID = ${id}`;
+    await pool.request().query(sqlJob_History);
+
+    const sqlEmployment = `DELETE dbo.Employment where Employee_ID = ${id}`;
+    await pool.request().query(sqlEmployment);
+
+    const sqlHr = 
+            DELETE `dbo.Personal where Employee_ID = ${id}`
+      ;
+
+    const sqlPayroll = "DELETE FROM employee WHERE Employee_Number = ?";
+    await pool.request().query(sqlHr);
+    await connPr.execute(sqlPayroll, [id]);
     return res.status(200).json({
-      message: "Delete successfully"
+      message: "Delete successfully",
     });
   } catch (error) {
     console.log(error);
     return res.status(500).json({
       message: `Employee with ID ${id} delete failed`,
-      error: error.message
+      error: error.message,
     });
   }
 }
