@@ -29,7 +29,7 @@ exports.createNewEmployee = async(req, res, next) => {
   } catch (error) {
     console.log(error);
     return res.status(500).json({
-      message: `Employee with ID ${Employee_ID} create failed`,
+      message: 'Employee with ID create failed',
       error: error.message
     });
   }
@@ -125,7 +125,7 @@ exports.editEmployee = async function (req, res, next) {
 
  
     return res.status(200).json({
-      message: "Employee with ID ${id} has been updated successfully.",
+      message: "Employee with ID has been updated successfully.",
       data: result.recordsets,
     });
 
@@ -165,7 +165,7 @@ exports.deleteEmployee = async (req, res, next) => {
   } catch (error) {
     console.log(error);
     return res.status(500).json({
-      message: `Employee with ID ${id} delete failed`,
+      message: "Employee with ID delete failed",
       error: error.message,
     });
   }
